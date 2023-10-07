@@ -1,0 +1,17 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>response</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label>{{searchParams.velocity}}</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>{{searchParams.distance}}</ion-label>
+  </ion-item>
+  
+  <ion-button (click)="initPage()"> Go Home </ion-button>
+</ion-content>

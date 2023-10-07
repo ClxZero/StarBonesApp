@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-item fill="outline" shape="round">
+    <ion-label position="floating">Velocidad</ion-label>
+    <ion-input [(ngModel)]='searchParams.velocity' ngDefaultControl placeholder="1" clear-input="true"
+      inputmode="numeric" type="number" value="number" required="true">
+    </ion-input>
+  </ion-item>
+
+  <ion-item fill="outline" shape="round">
+    <ion-label position="floating">Distance</ion-label>
+    <ion-input [(ngModel)]='searchParams.distance' ngDefaultControl placeholder="1" clear-input="true"
+      inputmode="numeric" type="number" value="number" required="true">
+    </ion-input>
+  </ion-item>
+
+  <ion-button (click)="resolve()"> resolve </ion-button>
+</ion-content>
