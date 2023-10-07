@@ -7,12 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-  constructor(
-    private router: Router) {}
+  constructor(private router: Router) {}
 
   search() {
-    this.router.navigateByUrl('/search')
+    this.router.navigateByUrl('/search');
   }
-
 }

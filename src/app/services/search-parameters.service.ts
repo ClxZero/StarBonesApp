@@ -7,7 +7,7 @@ export class SearchParametersService {
 
   constructor() { }
 
-  static velocity: number;
-  static distance: number;
-  static dilatedTime: number;
+  velocity!: number;
+  distance!: number;
+  dilatedTime!: number;
 }
