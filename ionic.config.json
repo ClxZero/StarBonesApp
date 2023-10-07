@@ -1,0 +1,7 @@
+{
+  "name": "StarBonesApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
