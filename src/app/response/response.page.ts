@@ -21,19 +21,29 @@ export class ResponsePage implements OnInit {
   }
 
   /**
+   * Calculate time it took to travel, keep the metrics consistent, 
+   * this function doesnt discriminate between measure types
+   * @param distance
+   * @param speed
+   */
+  calculateTimeTravelled( distance: number, speed: number): number {
+    return distance / speed
+  }
+
+  /**
    * Calculate time dilation based on
    * @param timeTraveled in years
-   * @param velocityPercentage as a percentage of the speed of light
+   * @param velocity as a percentage of the speed of light
    */
   calculateTimeDilation(
     timeTraveled: number,
-    velocityPercentage: number
+    velocity: number
   ): number {
-    // Convert velocity percentage to fraction of the speed of light
-    const v = velocityPercentage / 100;
     // speed of light km/s
     const c = 299792458;
-    console.log(Math.pow(v, 2) / Math.pow(c, 2),Math.pow(v, 2) ,Math.pow(c, 2))
+
+    // Convert velocity percentage to fraction of the speed of light
+    const v = velocity * c / 100;
 
     // Calculate time dilation using the equation
     const timeDilated =
@@ -44,8 +54,12 @@ export class ResponsePage implements OnInit {
 
   velocityKmPerSecondToPercentageOfLightspeed(kmPerSecond: number) {
     const c = 299792458; // Speed of light in km/s
-    const v = (kmPerSecond / c) * 100; // Convert to percentage
+    const v = (kmPerSecond * 100) / c; // Convert to percentage
     return v;
+  }
+
+  kmHrTokmSec(kmPerHour: number): number {
+    return kmPerHour / 3600
   }
 
   distanceKmToLightYears(km: number) {
