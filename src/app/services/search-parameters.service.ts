@@ -9,5 +9,6 @@ export class SearchParametersService {
 
   velocity!: number;
   distance!: number;
+  travelTime!: number;
   dilatedTime!: number;
 }
