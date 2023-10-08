@@ -13,11 +13,20 @@
       </ion-input>
     </ion-item>
 
-    <ion-item fill="outline" shape="round">
-      <ion-label position="floating">Travel time in years</ion-label>
-      <ion-input [(ngModel)]='searchParams.travelTime' ngDefaultControl clear-input="true"
-        inputmode="numeric" type="number" value="number" required="true">
-      </ion-input>
+    <ion-item *ngIf="!exoplanetsList">
+      <ion-label>Loading destinations...</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-select (ionChange)="selectDestiny($event)" label="Select a destination" fill="outline" 
+      label-placement="floating" *ngIf="exoplanetsList">
+        <ion-select-option *ngFor="let destiny of destinationsList; index as i" value="{{i}}">{{destiny.display_name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item *ngIf="searchParams.destiny">
+      <ion-label>{{searchParams.destiny.display_name}} - Distance: {{searchParams.destiny.st_dist}} ly </ion-label>
+      <p>{{searchParams.destiny.subtitle}}</p>
     </ion-item>
 
     <ion-button (click)="resolve()"> resolve </ion-button>

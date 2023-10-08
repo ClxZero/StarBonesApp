@@ -8,7 +8,7 @@ import { SearchParametersService } from '../services/search-parameters.service';
   styleUrls: ['./response.page.scss'],
 })
 export class ResponsePage implements OnInit {
-
+  errorAnswer = 'Loading...';
   timeDilation!: number;
 
   constructor(
@@ -17,17 +17,32 @@ export class ResponsePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.timeDilation = this.calculateTimeDilation(this.searchParams.travelTime, this.searchParams.velocity);
+    if (this.searchParams.destiny?.st_dist && this.searchParams.velocity) {
+      this.searchParams.travelTime = this.calculateTimeTravelled(
+        this.searchParams.destiny.st_dist,
+        this.searchParams.velocity
+      );
+      this.timeDilation = this.calculateTimeDilation(
+        this.searchParams.travelTime,
+        this.searchParams.velocity
+      );
+      this.errorAnswer = '';
+    } else {
+      this.errorAnswer = 'Missing Data';
+    }
   }
 
   /**
-   * Calculate time it took to travel, keep the metrics consistent, 
+   * Calculate time it took to travel, keep the metrics consistent,
    * this function doesnt discriminate between measure types
    * @param distance
-   * @param speed
+   * @param speed as a percentage of the speed of light
+   * @returns travelTime
    */
-  calculateTimeTravelled( distance: number, speed: number): number {
-    return distance / speed
+  calculateTimeTravelled(distance: number, speed: number): number {
+    const speedAsPercentageOfLightspeed = speed / 100;
+
+    return distance / speedAsPercentageOfLightspeed;
   }
 
   /**
@@ -35,19 +50,16 @@ export class ResponsePage implements OnInit {
    * @param timeTraveled in years
    * @param velocity as a percentage of the speed of light
    */
-  calculateTimeDilation(
-    timeTraveled: number,
-    velocity: number
-  ): number {
+  calculateTimeDilation(timeTraveled: number, velocity: number): number {
     // speed of light km/s
     const c = 299792458;
 
     // Convert velocity percentage to fraction of the speed of light
-    const v = velocity * c / 100;
+    const v = (velocity * c) / 100;
 
     // Calculate time dilation using the equation
     const timeDilated =
-      timeTraveled / Math.sqrt(1 - (Math.pow(v, 2) / Math.pow(c, 2)));
+      timeTraveled / Math.sqrt(1 - Math.pow(v, 2) / Math.pow(c, 2));
 
     return timeDilated;
   }
@@ -59,12 +71,7 @@ export class ResponsePage implements OnInit {
   }
 
   kmHrTokmSec(kmPerHour: number): number {
-    return kmPerHour / 3600
-  }
-
-  distanceKmToLightYears(km: number) {
-    const lightYearInKm: number = 9.461e12; // 1 light-year in kilometers
-    return km / lightYearInKm;
+    return kmPerHour / 3600;
   }
 
   initPage() {
