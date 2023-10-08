@@ -5,20 +5,21 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <div class="main-container">
+    <ion-item fill="outline" shape="round">
+      <ion-label position="floating">Velocity as a percentage of the speed of light</ion-label>
+      <ion-input [(ngModel)]='searchParams.velocity' ngDefaultControl clear-input="true"
+        inputmode="numeric" type="number" value="number" required="true">
+      </ion-input>
+    </ion-item>
 
-  <ion-item fill="outline" shape="round">
-    <ion-label position="floating">Velocity as a percentage of the speed of light</ion-label>
-    <ion-input [(ngModel)]='searchParams.velocity' ngDefaultControl clear-input="true"
-      inputmode="numeric" type="number" value="number" required="true">
-    </ion-input>
-  </ion-item>
+    <ion-item fill="outline" shape="round">
+      <ion-label position="floating">Travel time in years</ion-label>
+      <ion-input [(ngModel)]='searchParams.travelTime' ngDefaultControl clear-input="true"
+        inputmode="numeric" type="number" value="number" required="true">
+      </ion-input>
+    </ion-item>
 
-  <ion-item fill="outline" shape="round">
-    <ion-label position="floating">Travel time in years</ion-label>
-    <ion-input [(ngModel)]='searchParams.travelTime' ngDefaultControl clear-input="true"
-      inputmode="numeric" type="number" value="number" required="true">
-    </ion-input>
-  </ion-item>
-
-  <ion-button (click)="resolve()"> resolve </ion-button>
+    <ion-button (click)="resolve()"> resolve </ion-button>
+  </div>
 </ion-content>
