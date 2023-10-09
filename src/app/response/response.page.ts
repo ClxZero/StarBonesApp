@@ -10,7 +10,8 @@ import { SearchParametersService } from '../services/search-parameters.service';
 export class ResponsePage implements OnInit {
   errorAnswer = 'Loading...';
   timeDilation!: number;
-  background: string = 'url(https://images-assets.nasa.gov/image/PIA01527/PIA01527~orig.jpg)';
+  background: string =
+    'url(https://images-assets.nasa.gov/image/PIA01527/PIA01527~orig.jpg)';
 
   constructor(
     private router: Router,
@@ -18,6 +19,9 @@ export class ResponsePage implements OnInit {
   ) {}
 
   ngOnInit() {
+    if (!this.searchParams.destiny) {
+      this.errorAnswer = 'No destination or speed selected';
+    } else {
       this.searchParams.travelTime = this.calculateTimeTravelled(
         this.searchParams.distance,
         this.searchParams.velocity
@@ -26,9 +30,10 @@ export class ResponsePage implements OnInit {
         this.searchParams.travelTime,
         this.searchParams.velocity
       );
-      if(this.searchParams.destiny.image) this.background = `url(https://exoplanets.nasa.gov${this.searchParams.destiny.image})`
+      if (this.searchParams.destiny.image)
+        this.background = `url(https://exoplanets.nasa.gov${this.searchParams.destiny.image})`;
       this.errorAnswer = '';
-   
+    }
   }
 
   /**

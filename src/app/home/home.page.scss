@@ -2,30 +2,37 @@ body {
   background-color: black;
 }
 
+ion-content {
+  background-image: url('https://images-assets.nasa.gov/image/PIA00143/PIA00143~orig.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 65%;
+  --background: none;
+}
+
+ion-note {    
+  color: #8669a2;
+  text-shadow: -1px -1px 1px black;
+}
+
 #container {
   display: grid;
   grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
   grid-template-rows: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
   text-align: center;
-  height: 800px;
+  height: 720px;
   width: 360px;
-  background-image: url(https://www.nasa.gov/wp-content/uploads/2023/03/uranus_lg.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 65%;
 }
 
 #container strong {
-  font-size: 20px;
+  font-size: 24px;
   line-height: 26px;
 }
 
 #container p {
   font-size: 16px;
   line-height: 22px;
-
   color: #8c8c8c;
-
   margin: 0;
 }
 
@@ -38,6 +45,8 @@ body {
   grid-column-end: 9;
   grid-row-start: 2;
   grid-row-end: 4;
+  margin-top: 30px;
+  text-shadow: -1px -1px 1px black;
 }
 
 #searchButton::part(native) {
@@ -49,9 +58,16 @@ body {
 }
 
 #searchButton {
-
   grid-column-start: 8;
   grid-column-end: 10;
   grid-row-start: 6;
   grid-row-end: 7;
+}
+
+#pseudo-footer {
+  color:rgb(164 175 178 / 71%);
+  position:absolute;
+  bottom: 15px;
+  cursor: pointer;
+  font-size: 13px;
 }

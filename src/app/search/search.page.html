@@ -26,8 +26,11 @@
   
     <ion-item *ngIf="searchParams.destiny">
       <ion-label>{{searchParams.destiny.display_name}} - Distance: {{searchParams.destiny.st_dist}} ly </ion-label>
-      <p>{{searchParams.destiny.subtitle}}</p>
     </ion-item>
+    
+    <hr>
+    <ion-note *ngIf="searchParams.destiny">{{searchParams.destiny.subtitle}}</ion-note>
+    <hr>
 
     <ion-button (click)="resolve()"> resolve </ion-button>
   </div>

@@ -12,4 +12,8 @@ export class HomePage {
   search() {
     this.router.navigateByUrl('/search');
   }
+
+  teamLink() {
+    document.location.href = 'https://www.spaceappschallenge.org/2023/find-a-team/star-bones-technologies/';
+  }
 }
