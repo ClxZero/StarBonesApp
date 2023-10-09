@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" [style.background]="background">
   <div class="main-container">
     <ion-item *ngIf="errorAnswer">
       <ion-label>{{errorAnswer}}</ion-label>
@@ -22,7 +22,29 @@
       <ion-item>
         <ion-label>Time that passed on earth: {{this.timeDilation}} years</ion-label>
       </ion-item>
+
+<!-- Info -->
+      <ion-item>
+        <ion-label>{{this.searchParams.destiny.display_name}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Distance from Earth: {{this.searchParams.destiny.st_dist}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Type: {{this.searchParams.destiny.planet_type}}</ion-label>
+      </ion-item>
+
+ 
+      <ion-note>{{this.searchParams.destiny.description}}</ion-note>
+    
+
+      <ion-button (click)="moreInfo()" fill="clear"> More info</ion-button>
+
+
     </div>
+
     <ion-button (click)="initPage()"> Go Home </ion-button>
   </div>
 </ion-content>

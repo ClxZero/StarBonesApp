@@ -10,6 +10,7 @@ import { SearchParametersService } from '../services/search-parameters.service';
 export class ResponsePage implements OnInit {
   errorAnswer = 'Loading...';
   timeDilation!: number;
+  background: string = 'url(https://images-assets.nasa.gov/image/PIA01527/PIA01527~orig.jpg)';
 
   constructor(
     private router: Router,
@@ -17,19 +18,17 @@ export class ResponsePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.searchParams.destiny?.st_dist && this.searchParams.velocity) {
       this.searchParams.travelTime = this.calculateTimeTravelled(
-        this.searchParams.destiny.st_dist,
+        this.searchParams.distance,
         this.searchParams.velocity
       );
       this.timeDilation = this.calculateTimeDilation(
         this.searchParams.travelTime,
         this.searchParams.velocity
       );
+      if(this.searchParams.destiny.image) this.background = `url(https://exoplanets.nasa.gov${this.searchParams.destiny.image})`
       this.errorAnswer = '';
-    } else {
-      this.errorAnswer = 'Missing Data';
-    }
+   
   }
 
   /**
@@ -72,6 +71,14 @@ export class ResponsePage implements OnInit {
 
   kmHrTokmSec(kmPerHour: number): number {
     return kmPerHour / 3600;
+  }
+
+  moreInfo() {
+    if (this.searchParams.destiny.url) {
+      document.location.href = `https://exoplanets.nasa.gov${this.searchParams.destiny.url}`;
+    } else {
+      document.location.href = `https://science.nasa.gov/${this.searchParams.destiny.display_name}`;
+    }
   }
 
   initPage() {

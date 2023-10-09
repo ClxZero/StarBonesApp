@@ -44,7 +44,6 @@ export class SearchPage implements OnInit {
   }
 
   resolve() {
-    console.log(this.searchParams.destiny, this.searchParams.velocity)
     this.router.navigateByUrl('/response');
   }
 
