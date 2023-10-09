@@ -1,0 +1,46 @@
+#general-container {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(119, 72, 195, 1) 100%);
+    color: white;
+    --background: none;
+}
+
+h2, p {
+    color: white;
+    line-height: 1.5
+}
+
+.search-title-container, .search-intro-container {
+    --background: none;
+    margin-top: 5%;
+}
+
+.search-intro-container {
+    margin-bottom: 10%;
+}
+
+.selectSpeedInput, .selectDestinationInput {
+    margin-bottom: 5%;
+}
+
+#resolveBtn::part(native) {
+    width: 80%;
+    height: 30%;
+    font-size: 16px;
+    background: linear-gradient(90deg, rgba(119, 72, 195, 1) 15%, rgba(0, 0, 0, 0) 91%);
+    border: 1.5px solid #ffff;
+    margin-bottom: 20%;
+}
+
+#resolveBtn {
+    grid-column-start: 8;
+    grid-column-end: 10;
+    grid-row-start: 6;
+    grid-row-end: 7;
+}
+
+.rocket-img {
+    width: 30%;
+    display: flex; // no funciona
+    justify-content: flex-end;
+}

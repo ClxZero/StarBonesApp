@@ -1,17 +1,20 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>search</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
+<ion-content id="general-container" [fullscreen]="true">
   <div class="main-container">
-    <ion-item fill="outline" shape="round">
-      <ion-label position="floating">Velocity as a percentage of the speed of light</ion-label>
-      <ion-input [(ngModel)]='searchParams.velocity' ngDefaultControl clear-input="true" max="100" min="0"
-        inputmode="numeric" type="number" value="number" required="true">
-      </ion-input>
-    </ion-item>
+    <!-- INPUT CONTAINER -->
+    <div class="searchbar-container">
+      <ion-item class="search-title-container">
+        <h2>Star Bone App</h2>
+      </ion-item>
+      <ion-item class="search-intro-container">
+        <p>Star Bone App will help you calculate your space travels in an easy, user friendly way. Please select the speed and your destination down below.</p>
+      </ion-item>
+
+      <ion-item class="selectSpeedInput" fill="outline" shape="round">
+        <ion-label position="floating">Velocity as a percentage of the speed of light</ion-label>
+        <ion-input [(ngModel)]='searchParams.velocity' ngDefaultControl clear-input="true" inputmode="numeric"
+          type="number" value="number" required="true">
+        </ion-input>
+      </ion-item>
 
     <ion-item *ngIf="!exoplanetsList">
       <ion-label>Loading destinations...</ion-label>
@@ -20,7 +23,7 @@
     <ion-item>
       <ion-select (ionChange)="selectDestiny($event)" label="Select a destination" fill="outline" 
       label-placement="floating" *ngIf="exoplanetsList">
-        <ion-select-option *ngFor="let destiny of destinationsList; index as i" value="{{i}}">{{destiny.display_name}}</ion-select-option>
+        <ion-select-option class="selectDestinationInput" *ngFor="let destiny of destinationsList; index as i" value="{{i}}">{{destiny.display_name}}</ion-select-option>
       </ion-select>
     </ion-item>
   
@@ -31,7 +34,10 @@
     <hr>
     <ion-note *ngIf="searchParams.destiny">{{searchParams.destiny.subtitle}}</ion-note>
     <hr>
+    </div>
 
-    <ion-button (click)="resolve()"> resolve </ion-button>
+    <ion-button id="resolveBtn" (click)="resolve()"> resolve </ion-button>
+
+    <ion-img class="rocket-img" src="/assets/BottomRocket.png" ></ion-img>
   </div>
 </ion-content>
