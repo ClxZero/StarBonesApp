@@ -1,25 +1,49 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>search</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
+<ion-content id="general-container" [fullscreen]="true">
   <div class="main-container">
-    <ion-item fill="outline" shape="round">
-      <ion-label position="floating">Velocity as a percentage of the speed of light</ion-label>
-      <ion-input [(ngModel)]='searchParams.velocity' ngDefaultControl clear-input="true"
-        inputmode="numeric" type="number" value="number" required="true">
-      </ion-input>
-    </ion-item>
+    <!-- TITLE SEARCH INPUT CONTAINER -->
+    <div class="searchbar-container">
+      <ion-item class="search-title-container">
+        <h2>Star Bone App</h2>
+      </ion-item>
+      <ion-item class="search-intro-container">
+        <p>Star Bone App will help you calculate your space travels in an easy, user friendly way.</p>
+      </ion-item>
 
-    <ion-item fill="outline" shape="round">
-      <ion-label position="floating">Travel time in years</ion-label>
-      <ion-input [(ngModel)]='searchParams.travelTime' ngDefaultControl clear-input="true"
-        inputmode="numeric" type="number" value="number" required="true">
-      </ion-input>
-    </ion-item>
+      <ion-item class="input1" fill="outline" shape="round">
+        <ion-label position="floating">Velocity as a percentage of the speed of light</ion-label>
+        <ion-input [(ngModel)]='searchParams.velocity' ngDefaultControl clear-input="true" inputmode="numeric"
+          type="number" value="number" required="true">
+        </ion-input>
+      </ion-item>
 
-    <ion-button (click)="resolve()"> resolve </ion-button>
+      <ion-item class="input2" fill="outline" shape="round">
+        <ion-label position="floating">Travel time in years</ion-label>
+        <ion-input [(ngModel)]='searchParams.travelTime' ngDefaultControl clear-input="true" inputmode="numeric"
+          type="number" value="number" required="true">
+        </ion-input>
+      </ion-item>
+    </div>
+
+    <!-- CALCULATE BUTTON -->
+    <div>
+      <div class="premium-ride-type">
+        <ion-icon></ion-icon>
+        <div class="premium-ride-text">
+          <p>Premium Spacial Ride</p>
+          <p>At 10,000 km/h</p>
+        </div>
+        <ion-button (click)="resolve()"> Calculate </ion-button>
+      </div>
+
+      <div class="general-ride-type">
+        <ion-icon></ion-icon>
+        <div class="general-ride-text">
+          <p>General Spacial Ride</p>
+          <p>At 3,000 km/h</p>
+        </div>
+        <ion-button (click)="resolve()"> Calculate </ion-button>
+      </div>
+
+    </div>
   </div>
 </ion-content>
