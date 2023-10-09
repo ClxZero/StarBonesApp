@@ -6,6 +6,7 @@ import { HttpQuerysService } from '../services/http-querys.service';
 import { Subscription } from 'rxjs';
 import { ExoplanetsAPIObject } from '../models/exoApi.interface';
 import { solarSystemObjects } from './solarsystem';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'search',
@@ -20,7 +21,8 @@ export class SearchPage implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
-    public searchParams: SearchParametersService
+    public searchParams: SearchParametersService,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -34,17 +36,32 @@ export class SearchPage implements OnInit {
 
   getExoplanetList() {
     const query = new HttpQuerysService(this.http);
-    // TODO: load more exoplanets
-    const sub = query.getExoplanetList().subscribe((list) => {
+    const page = Math.floor(Math.random() * 5);
+    const sub = query.getExoplanetList(page).subscribe((list) => {
       this.exoplanetsList = list.items;
-      this.destinationsList = [...solarSystemObjects, ...this.exoplanetsList]
+      this.destinationsList = [...this.exoplanetsList, ...solarSystemObjects]
     });
 
     this.subscription.add(sub);
   }
 
-  resolve() {
-    this.router.navigateByUrl('/response');
+  async resolve() {
+    if ( this.searchParams.velocity > 100 ) {
+      const alert = await this.alertController.create({
+        subHeader: `You can't travel faster than light`,
+        buttons: [
+          {
+            text: 'Back',
+            role: 'confirm',
+          },
+        ],
+      });
+
+      return await alert.present();
+
+    }
+
+    return this.router.navigateByUrl('/response');
   }
 
   ngOnDestroy() {

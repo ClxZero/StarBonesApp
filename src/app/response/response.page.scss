@@ -1,4 +1,21 @@
 ion-content {
     --background: none;
-    background: 'url(https://images-assets.nasa.gov/image/PIA01527/PIA01527~orig.jpg)';
+    background-size: cover !important;
+
+    div {
+        min-height: 550px;
+        text-align: center;
+    }
+}
+
+#response {
+    margin-top: 40%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#home {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
 }

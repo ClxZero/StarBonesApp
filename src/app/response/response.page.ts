@@ -11,7 +11,7 @@ export class ResponsePage implements OnInit {
   errorAnswer = 'Loading...';
   timeDilation!: number;
   background: string =
-    'url(https://images-assets.nasa.gov/image/PIA01527/PIA01527~orig.jpg)';
+    'url(https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000132/GSFC_20171208_Archive_e000132~orig.jpg)';
 
   constructor(
     private router: Router,
