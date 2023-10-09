@@ -1,8 +1,8 @@
 {
   "name": "StarBonesApp",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "ClxZero, Adamntine, Naatab, DimeMaxi",
+  "homepage": "https://www.spaceappschallenge.org/2023/find-a-team/star-bones-technologies/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -63,5 +63,5 @@
     "ts-node": "^8.3.0",
     "typescript": "~5.0.2"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project made for the Space App Challange 2023"
 }
