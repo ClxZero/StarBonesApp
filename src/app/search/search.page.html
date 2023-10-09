@@ -16,34 +16,25 @@
         </ion-input>
       </ion-item>
 
-      <ion-item class="input2" fill="outline" shape="round">
-        <ion-label position="floating">Travel time in years</ion-label>
-        <ion-input [(ngModel)]='searchParams.travelTime' ngDefaultControl clear-input="true" inputmode="numeric"
-          type="number" value="number" required="true">
-        </ion-input>
-      </ion-item>
-    </div>
+    <ion-item *ngIf="!exoplanetsList">
+      <ion-label>Loading destinations...</ion-label>
+    </ion-item>
 
-    <!-- CALCULATE BUTTON -->
-    <div>
-      <div class="premium-ride-type">
-        <ion-icon></ion-icon>
-        <div class="premium-ride-text">
-          <p>Premium Spacial Ride</p>
-          <p>At 10,000 km/h</p>
-        </div>
-        <ion-button (click)="resolve()"> Calculate </ion-button>
-      </div>
+    <ion-item>
+      <ion-select (ionChange)="selectDestiny($event)" label="Select a destination" fill="outline" 
+      label-placement="floating" *ngIf="exoplanetsList">
+        <ion-select-option *ngFor="let destiny of destinationsList; index as i" value="{{i}}">{{destiny.display_name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item *ngIf="searchParams.destiny">
+      <ion-label>{{searchParams.destiny.display_name}} - Distance: {{searchParams.destiny.st_dist}} ly </ion-label>
+    </ion-item>
+    
+    <hr>
+    <ion-note *ngIf="searchParams.destiny">{{searchParams.destiny.subtitle}}</ion-note>
+    <hr>
 
-      <div class="general-ride-type">
-        <ion-icon></ion-icon>
-        <div class="general-ride-text">
-          <p>General Spacial Ride</p>
-          <p>At 3,000 km/h</p>
-        </div>
-        <ion-button (click)="resolve()"> Calculate </ion-button>
-      </div>
-
-    </div>
+    <ion-button (click)="resolve()"> resolve </ion-button>
   </div>
 </ion-content>

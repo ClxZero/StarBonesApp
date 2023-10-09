@@ -1,13 +1,17 @@
 <ion-content [fullscreen]="true">
   <div id="container" class="main-container">
-    <strong>Star Bones App</strong>
-    <p>WIP</p>
+    <div id="explore">
+      <strong>Explore the beauty of the Space with us!</strong>
+      <hr>
+      <ion-note>Plan your travel through the solar system and beyond</ion-note>
+    </div>
 
-  <ion-button id="searchButton" (click)="search()" shape="round">
-    <ion-icon name="arrow-forward-outline"></ion-icon> 
-  </ion-button>
+    <ion-button id="searchButton" (click)="search()" shape="round">
+      <ion-icon name="arrow-forward-outline"></ion-icon>
+    </ion-button>
+
+
+    <ion-note (click)="teamLink()" id="pseudo-footer"> From NASA International Space Apps Challange </ion-note>
 
   </div>
 </ion-content>
-
-
