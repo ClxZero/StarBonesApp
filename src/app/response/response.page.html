@@ -1,49 +1,29 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>response</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true" [style.background]="background">
   <div class="main-container">
     <ion-item *ngIf="errorAnswer">
       <ion-label>{{errorAnswer}}</ion-label>
     </ion-item>
 
-    <div *ngIf="!errorAnswer">
-      <ion-item>
-        <ion-label>Velocity: {{searchParams.velocity}}% of speed of light</ion-label>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Travel duration: {{searchParams.travelTime}} years</ion-label>
-      </ion-item>
-      
-      <ion-item>
-        <ion-label>Time that passed on earth: {{this.timeDilation}} years</ion-label>
-      </ion-item>
-
       <!-- Info -->
-      <ion-item>
-        <ion-label>{{this.searchParams.destiny.display_name}}</ion-label>
-      </ion-item>
+    <div id="response" *ngIf="!errorAnswer">
 
-      <ion-item>
-        <ion-label>Distance from Earth: {{this.searchParams.destiny.st_dist}}</ion-label>
-      </ion-item>
+      <h1>{{this.searchParams.destiny.display_name}}</h1>
 
-      <ion-item>
-        <ion-label>Type: {{this.searchParams.destiny.planet_type}}</ion-label>
-      </ion-item>
+      <h3>{{searchParams.travelTime | number : '1.2-4'}} years at {{searchParams.velocity | number : '1.2-4'}}% of speed of light</h3>
+      
+      <h5>Time that passed on earth: {{this.timeDilation | number : '1.2-4'}} years</h5>
 
+      <h6>Distance from Earth: {{this.searchParams.destiny.st_dist | number : '1.2-4'}} light years</h6>
+
+      <p>Type: {{this.searchParams.destiny.planet_type}}</p>
  
       <ion-note>{{this.searchParams.destiny.description}}</ion-note>
-    
+      <hr>    
 
-      <ion-button (click)="moreInfo()" fill="clear"> More info</ion-button>
+      <ion-button (click)="moreInfo()" fill="outline"> More info</ion-button>
 
     </div>
 
-    <ion-button (click)="initPage()"> Go Home </ion-button>
+    <ion-button id="home" (click)="initPage()"> Go Home </ion-button>
   </div>
 </ion-content>

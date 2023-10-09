@@ -8,7 +8,7 @@
   <div class="main-container">
     <ion-item fill="outline" shape="round">
       <ion-label position="floating">Velocity as a percentage of the speed of light</ion-label>
-      <ion-input [(ngModel)]='searchParams.velocity' ngDefaultControl clear-input="true"
+      <ion-input [(ngModel)]='searchParams.velocity' ngDefaultControl clear-input="true" max="100" min="0"
         inputmode="numeric" type="number" value="number" required="true">
       </ion-input>
     </ion-item>
@@ -27,7 +27,7 @@
     <ion-item *ngIf="searchParams.destiny">
       <ion-label>{{searchParams.destiny.display_name}} - Distance: {{searchParams.destiny.st_dist}} ly </ion-label>
     </ion-item>
-    
+
     <hr>
     <ion-note *ngIf="searchParams.destiny">{{searchParams.destiny.subtitle}}</ion-note>
     <hr>

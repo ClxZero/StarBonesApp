@@ -38,7 +38,7 @@ export class HttpQuerysService {
   getExoplanetList(page = 0): Observable<ExoplanetApiResponse> {
     return this.http
       .get<any>(
-        `https://exoplanets.nasa.gov/api/v1/planets/?order=display_name+asc&per_page=10&page=${page}&search=`
+        `https://exoplanets.nasa.gov/api/v1/planets/?order=display_name+asc&per_page=15&page=${page}&search=`
       )
       .pipe(retry(3), catchError(this.handleError));
   }
