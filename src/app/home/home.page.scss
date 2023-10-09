@@ -1,5 +1,18 @@
+body {
+  background-color: black;
+}
+
 #container {
+  display: grid;
+  grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+  grid-template-rows: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
   text-align: center;
+  height: 800px;
+  width: 360px;
+  background-image: url(https://www.nasa.gov/wp-content/uploads/2023/03/uranus_lg.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 65%;
 }
 
 #container strong {
@@ -20,11 +33,25 @@
   text-decoration: none;
 }
 
-#searchButton::part(native) {
-    width: 88.66px;
-    height: 85.25px;
-    font-size: 65px;
-    background: linear-gradient(90deg, rgba(119,72,195,1) 15%, rgba(0,0,0,0) 91%);
-    border: 1.5px solid #ffff;
+#explore {
+  grid-column-start: 2;
+  grid-column-end: 9;
+  grid-row-start: 2;
+  grid-row-end: 4;
 }
 
+#searchButton::part(native) {
+  width: 88.66px;
+  height: 85.25px;
+  font-size: 65px;
+  background: linear-gradient(90deg, rgba(119, 72, 195, 1) 15%, rgba(0, 0, 0, 0) 91%);
+  border: 1.5px solid #ffff;
+}
+
+#searchButton {
+
+  grid-column-start: 8;
+  grid-column-end: 10;
+  grid-row-start: 6;
+  grid-row-end: 7;
+}
